@@ -22,7 +22,6 @@ public class Panel extends JPanel {
     /**
      * Converts/writes a Mat into a BufferedImage.
      *
-     * @param matrix Mat of type CV_8UC3 or CV_8UC1
      * @return BufferedImage of type TYPE_3BYTE_BGR or TYPE_BYTE_GRAY
      */
     public boolean MatToBufferedImage(Mat matBGR){
@@ -36,14 +35,15 @@ public class Panel extends JPanel {
         final byte[] targetPixels = ((DataBufferByte) image.getRaster().getDataBuffer()).getData();
         System.arraycopy(sourcePixels, 0, targetPixels, 0, sourcePixels.length);
         long endTime = System.nanoTime();
-        System.out.println(String.format("Elapsed: %.2f ms", (float)(endTime - startTime)/1000000));
+        //log
+        //System.out.println(String.format("Elapsed: %.2f ms", (float)(endTime - startTime)/1000000));
         return true;
     }
 
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         if (this.image==null) return;
-        g.drawImage(this.image,10,10,this.image.getWidth(),this.image.getHeight(), null);
+        g.drawImage(this.image,0,0,this.image.getWidth(),this.image.getHeight(), null);
         //g.drawString("This is my custom Panel!",10,20);
     }
 }

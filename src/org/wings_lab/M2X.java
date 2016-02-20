@@ -13,21 +13,19 @@ import java.util.Hashtable;
  * Created by Wing on 20/2/2016.
  */
 public class M2X {
-    M2XClient client = new M2XClient("4e51dd845f792519530b4d2d30e4172f");
-    M2XDevice device = client.device("a10dd36dfa7718974755967a654e8a04");
-    M2XStream speed = device.stream("speed");
-    M2XStream eyes = device.stream("eyes_detection");
+    static M2XClient client = new M2XClient("43aef73936897db4e98f672755659b13");
+    static M2XDevice device = client.device("1e0393a13b9ffef6325b9fb4bc2aac61");
+    static M2XStream speed = device.stream("IsMoving");
+    static M2XStream eyes = device.stream("IsEyeClosing");
 
-    public void updateSpeed(int mph) throws IOException {
-        speed.updateValue(M2XClient.jsonSerialize(new HashMap<String, Object>()
-        {{
+    public static void UpdateSpeed(int mph) throws IOException {
+        speed.updateValue(M2XClient.jsonSerialize(new HashMap<String, Object>() {{
             put("value", mph);
         }}));
     }
 
-    public void updateEyesDetection(int status) throws IOException {
-        eyes.updateValue(M2XClient.jsonSerialize(new Hashtable<String, Object>()
-        {{
+    public static void UpdateEyesDetection(int status) throws IOException {
+        eyes.updateValue(M2XClient.jsonSerialize(new Hashtable<String, Object>() {{
             put("value", status);
         }}));
     }
