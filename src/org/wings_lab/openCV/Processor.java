@@ -12,7 +12,7 @@ public class Processor {
     private CascadeClassifier face_cascade;
 
     public Processor() {
-        face_cascade = new CascadeClassifier("vendor/opencv-3.1.0/data/haarcascades/haarcascade_profileface.xml");
+        face_cascade = new CascadeClassifier("vendor/opencv-3.1.0/data/haarcascades/haarcascade_frontalface_alt.xml");
         if(face_cascade.empty())
         {
             System.out.println("--(!)Erroring A\n");

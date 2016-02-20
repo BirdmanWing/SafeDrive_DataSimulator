@@ -43,7 +43,7 @@ public class Panel extends JPanel {
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         if (this.image==null) return;
-        g.drawImage(this.image,10,10,2*this.image.getWidth(),2*this.image.getHeight(), null);
+        g.drawImage(this.image,10,10,this.image.getWidth(),this.image.getHeight(), null);
         //g.drawString("This is my custom Panel!",10,20);
     }
 }

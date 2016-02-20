@@ -22,7 +22,7 @@ public class Camera {
     Processor processor = new Processor();
     Panel panel = new Panel();
     VideoCapture capture;
-    Mat cam_image;
+    Mat cam_image, cam_image_filp;
 
     public Camera() {
 
@@ -38,6 +38,7 @@ public class Camera {
 
         //Read the video stream
         cam_image = new Mat();
+        cam_image_filp = new Mat();
         capture = new VideoCapture(0);
         if (capture.isOpened()) {
             while (true) {
@@ -50,7 +51,8 @@ public class Camera {
                     cam_image = processor.detect(cam_image);
 
                     //display the image
-                    panel.MatToBufferedImage(cam_image);
+                    Core.flip(cam_image, cam_image_filp, 1);
+                    panel.MatToBufferedImage(cam_image_filp);
                     panel.repaint();
                 } else {
                     System.out.println(" --(!) No captured frame -- Break!");
