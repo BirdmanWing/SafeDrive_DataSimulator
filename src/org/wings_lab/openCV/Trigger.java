@@ -16,27 +16,37 @@ public class Trigger {
     Thread t;
 
     public void update(boolean trigger) {
-        if (!trigger) {
-            timer.cancel();
-            try {
-                M2X.UpdateEyesDetection(0);
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-            onOff = false;
-        }
-        timer = new Timer();
-        timer.schedule(new TimerTask() {
+        Runnable r = new Runnable() {
             @Override
             public void run() {
-                try {
-                    M2X.UpdateEyesDetection(1);
-                    onOff = true;
-                    System.out.println("Trigger!");
-                } catch (IOException ex) {
-                    ex.printStackTrace();
+                if (!trigger) {
+                    timer.cancel();
+                    try {
+                        M2X.UpdateEyesDetection(0);
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                    onOff = false;
                 }
+                timer = new Timer();
+                timer.schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        try {
+                            M2X.UpdateEyesDetection(1);
+                            onOff = true;
+                            System.out.println("Trigger!");
+                        } catch (IOException ex) {
+                            ex.printStackTrace();
+                        }
+                    }
+                }, 2000);
             }
-        }, 2000);
+        };
+        try {
+            t.stop();
+        } catch (Exception ex) {}
+        t = new Thread(r);
+        t.start();
     }
 }

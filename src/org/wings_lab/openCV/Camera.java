@@ -61,8 +61,4 @@ public class Camera {
             }
         }
     }
-    public void stop() {
-        frame.setVisible(false);
-        capture.release();
-    }
 }

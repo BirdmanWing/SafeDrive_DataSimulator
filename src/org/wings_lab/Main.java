@@ -23,26 +23,17 @@ public class Main {
             if (cmd.equals("s")) {
                 System.out.println("Enter the speed (mph)");
                 speed = scanner.nextInt();
-                try {
-                    M2X.UpdateSpeed(speed);
-                } catch (IOException ex) {
-                    ex.printStackTrace();
+                if (speed > 0) {
+                    try {
+                        M2X.UpdateSpeed(speed);
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
                 }
                 cam.start();
-            } else if (cmd.equals("u")) {
-                System.out.println("Enter the speed (mph)");
-                speed = scanner.nextInt();
-                try {
-                    M2X.UpdateSpeed(speed);
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
-                cam.stop();
-            } else if (cmd.equals("x"))
                 System.exit(0);
-            else
+            } else
                 System.out.println("error");
-            System.out.println("Enter u to update speed, x to exit");
         }
     }
 
