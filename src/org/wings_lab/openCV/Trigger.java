@@ -40,7 +40,7 @@ public class Trigger {
                             ex.printStackTrace();
                         }
                     }
-                }, 1000);
+                }, 2000);
             }
         };
         try {

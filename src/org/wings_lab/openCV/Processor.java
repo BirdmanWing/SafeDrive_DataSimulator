@@ -14,7 +14,7 @@ public class Processor {
 
     public Processor() {
         face_cascade = new CascadeClassifier("vendor/opencv-3.1.0/data/haarcascades/haarcascade_frontalface_alt.xml");
-        eyes_cascade = new CascadeClassifier("vendor/opencv-3.1.0/data/haarcascades/haarcascade_eye.xml");
+        eyes_cascade = new CascadeClassifier("vendor/opencv-3.1.0/data/haarcascades/haarcascade_lefteye_2splits.xml");
 
         if (face_cascade.empty() | eyes_cascade.empty()) {
             System.out.println("--(!)Erroring A\n");
