@@ -12,7 +12,6 @@ import java.util.TimerTask;
  */
 public class Trigger {
     boolean onOff = false;
-    boolean trigger2 = false;
     Timer timer = new Timer();
     Thread t;
 
@@ -23,10 +22,7 @@ public class Trigger {
                 if (!trigger) {
                     timer.cancel();
                     try {
-                        if (trigger2) {
                             M2X.UpdateEyesDetection(0);
-                            trigger2 = false;
-                        }
                     } catch (IOException ex) {
                         ex.printStackTrace();
                     }
@@ -39,13 +35,12 @@ public class Trigger {
                         try {
                             M2X.UpdateEyesDetection(1);
                             onOff = true;
-                            trigger2 = true;
                             System.out.println("Trigger!");
                         } catch (IOException ex) {
                             ex.printStackTrace();
                         }
                     }
-                }, 2000);
+                }, 1000);
             }
         };
         try {
