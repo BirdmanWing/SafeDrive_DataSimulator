@@ -29,4 +29,5 @@ public class M2X {
             put("value", status);
         }}));
     }
+
 }
