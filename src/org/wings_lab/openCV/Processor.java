@@ -26,7 +26,7 @@ public class Processor {
     }
 
     public Mat detect(Mat inputframe) {
-        long startTime = System.nanoTime();
+        //long startTime = System.nanoTime();
         Mat mRgba = new Mat();
         Mat mGrey = new Mat();
         MatOfRect faces = new MatOfRect();
@@ -35,7 +35,7 @@ public class Processor {
         Imgproc.cvtColor(mRgba, mGrey, Imgproc.COLOR_BGR2GRAY);
         Imgproc.equalizeHist(mGrey, mGrey);
         face_cascade.detectMultiScale(mGrey, faces);
-        long endTime = System.nanoTime();
+        //long endTime = System.nanoTime();
 
         //detection log
         //System.out.println(String.format("Detect: %.2f ms", (float) (endTime - startTime) / 1000000));

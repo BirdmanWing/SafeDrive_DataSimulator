@@ -26,15 +26,15 @@ public class Main {
                 if (speed > 0) {
                     try {
                         M2X.UpdateSpeed(speed);
+                        cam.start();
                     } catch (IOException ex) {
                         ex.printStackTrace();
                     }
+                } else {
+                    System.exit(0);
                 }
-                cam.start();
-                System.exit(0);
             } else
                 System.out.println("error");
         }
     }
-
 }
